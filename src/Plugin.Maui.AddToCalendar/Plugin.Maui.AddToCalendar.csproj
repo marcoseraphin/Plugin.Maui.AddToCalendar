@@ -29,7 +29,7 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<Title>.NET MAUI AddToCalendar Plugin</Title>
-		<Description>Plugin.Maui.AddToCalendar provides the ability to add a calendar event to the local calendar of your device in your .NET MAUI application.</Description>
+		<Description>Plugin.Maui.AddToCalendar provides the ability to read local device calendars and add a calendar event to the local calendar of your device in your .NET MAUI application.</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<DebugType>portable</DebugType>

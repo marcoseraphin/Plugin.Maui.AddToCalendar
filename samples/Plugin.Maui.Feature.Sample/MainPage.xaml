@@ -11,6 +11,7 @@
                Margin="30"/>
 
         <Button Text="Add sample event of today to local calendar"
+                Command="{Binding AddEventWithDateToCalendarCommand}"
                 HorizontalOptions="Center"/>
 
         <Picker

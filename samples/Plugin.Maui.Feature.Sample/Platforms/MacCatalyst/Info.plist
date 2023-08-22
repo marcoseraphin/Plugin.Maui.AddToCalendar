@@ -26,5 +26,7 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Permissions are required to add events to the calendar.</string>
 </dict>
 </plist>

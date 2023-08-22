@@ -1,39 +1,25 @@
-﻿using Plugin.Maui.AddToCalendar;
+﻿using CommunityToolkit.Mvvm.Messaging;
 
 namespace Plugin.Maui.AddToCalendar.Sample;
 
 public partial class MainPage : ContentPage
 {
-	readonly IAddToCalendar feature;
-
-	public MainPage(IAddToCalendar feature)
+	public MainPage(MainViewModel viewModel)
 	{
 		InitializeComponent();
+		this.BindingContext = viewModel;
 
-		this.feature = feature;
-	}
-
-	/// <summary>
-	/// CheckAndRequestCalendarPermission
-	/// </summary>
-	/// <returns></returns>
-	public async Task<PermissionStatus> CheckAndRequestCalendarPermission()
-	{
-		var status = await Permissions.CheckStatusAsync<Permissions.CalendarWrite>();
-
-		if (status == PermissionStatus.Granted)
+		WeakReferenceMessenger.Default.Register<OpenCalendarPickerMessage>(this, (r, m) =>
 		{
-			return status;
-		}
+			CalendarPicker.IsVisible = true;
+			CalendarPicker.Focus();
+		});
 
-		if (status == PermissionStatus.Denied)
+
+		WeakReferenceMessenger.Default.Register<CloseCalendarPickerMessage>(this, (r, m) =>
 		{
-			return status;
-		}
-
-		status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
-
-		return status;
+			CalendarPicker.Unfocus();
+			CalendarPicker.IsVisible = false;
+		});
 	}
-
 }

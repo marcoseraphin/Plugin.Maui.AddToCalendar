@@ -87,8 +87,6 @@ iOS:
 
 <img src="https://user-images.githubusercontent.com/10572315/262338408-5f3ab3af-6dd1-4fe0-a8c9-fed8a84da64b.png" height="400" alt="Screenshot1"/>
 
-<img src="https://user-images.githubusercontent.com/10572315/262338398-6faeea40-aa0e-4b39-863c-f335a82deed5.png" height="400" alt="Screenshot1"/>
-
 <img src="https://user-images.githubusercontent.com/10572315/262338401-6c9a992b-657b-4c47-9240-c7f4c89fef18.png" height="400" alt="Screenshot1"/>
 
 <img src="https://user-images.githubusercontent.com/10572315/262338410-3daae351-edc6-4bbe-a82d-ad99a312a551.png" height="400" alt="Screenshot1"/>

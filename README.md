@@ -28,6 +28,71 @@ The repository also contains a small .Net MAUI demo app that includes the follow
 - Using the [.Net MAUI CommunityToolkit](https://learn.microsoft.com/en-US/dotnet/communitytoolkit/maui/)
 - MVVM Architecture
 
+# Permissions
+
+## iOS / macOS:
+
+You will need to add these entries to the `info.plist` file in the platform/iOS (platform/MacCatalyst) folder:
+
+```
+<key>NSCalendarsUsageDescription</key>
+<string>Permissions are required to add events to the calendar.</string>
+```
+
+## Android:
+
+You will need to add these entries to the `AndroidManifest.xml` file in the platform/Android folder:
+
+```
+<uses-permission android:name="android.permission.READ_CALENDAR" />
+<uses-permission android:name="android.permission.WRITE_CALENDAR" />
+```
+
+## .Net MAUI App
+In your app you can request these permissions like this:
+(please note that in Android you need to request both read and write permissions):
+
+```
+public async Task<PermissionStatus> CheckAndRequestReadCalendarPermission()
+{
+	var status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
+
+	if (status == PermissionStatus.Granted)
+	{
+		return status;
+	}
+
+	if (status == PermissionStatus.Denied)
+	{
+		status = await Permissions.RequestAsync<Permissions.CalendarRead>();
+		return status;
+	}
+
+	status = await Permissions.RequestAsync<Permissions.CalendarRead>();
+
+	return status;
+}
+	
+public async Task<PermissionStatus> CheckAndRequestWriteCalendarPermission()
+{
+	var status = await Permissions.CheckStatusAsync<Permissions.CalendarWrite>();
+
+	if (status == PermissionStatus.Granted)
+	{
+		return status;
+	}
+
+	if (status == PermissionStatus.Denied)
+	{
+		status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
+		return status;
+	}
+
+	status = await Permissions.RequestAsync<Permissions.CalendarWrite>();
+
+	return status;
+}
+```
 
 ## Getting Started
 
@@ -35,51 +100,51 @@ This sample code shows the usage of the API methods:
 
 ```
 partial void OnSelectedCalendarItemChanged(string value)
+{
+	string selectedCalendar = null;
+
+	var calendars = this.addToCalendarService.GetCalendarList();
+	if (calendars.Count <= 0)
 	{
-		string selectedCalendar = null;
-
-		var calendars = this.addToCalendarService.GetCalendarList();
-		if (calendars.Count <= 0)
-		{
-			return;
-		}
-
-		// get selected calendar
-		if (calendars.Count <= 1)
-		{
-			return;
-		}
-
-		foreach (var itemCalendar in calendars)
-		{
-			if (SelectedCalendarItem != itemCalendar)
-			{
-				continue;
-			}
-			selectedCalendar = itemCalendar;
-			break;
-		}
-
-		DateTime today = DateTime.Now;
-		var startDate = new DateTime(today.Year,
-									 today.Month,
-									 today.Day, 8, 0, 0);
-
-		var endDate = new DateTime(today.Year,
-								   today.Month,
-								   today.Day, 18, 0, 0);
-
-		this.addToCalendarService.CreateCalendarEvent("Event MAUI conference",
-		"Visit the MAUI conference, URL: https://learn.microsoft.com/en-US/dotnet/maui/what-is-maui",
-		"Redmond", startDate, endDate, this.SelectedCalendarItem);
-
-		if (!string.IsNullOrEmpty(selectedCalendar))
-		{
-			WeakReferenceMessenger.Default.Send(new CloseCalendarPickerMessage(string.Empty));
-			Application.Current.MainPage.DisplayAlert("Calendar registration successful", $"The event was successfully added to calendar '{selectedCalendar}'!", "OK");
-		}
+		return;
 	}
-   ```
+
+	// get selected calendar
+	if (calendars.Count <= 1)
+	{
+		return;
+	}
+
+	foreach (var itemCalendar in calendars)
+	{
+		if (SelectedCalendarItem != itemCalendar)
+		{
+			continue;
+		}
+		selectedCalendar = itemCalendar;
+		break;
+	}
+
+	DateTime today = DateTime.Now;
+	var startDate = new DateTime(today.Year,
+								today.Month,
+								today.Day, 8, 0, 0);
+
+	var endDate = new DateTime(today.Year,
+							   today.Month,
+							   today.Day, 18, 0, 0);
+
+	this.addToCalendarService.CreateCalendarEvent("Event MAUI conference",
+	"Visit the MAUI conference, URL: https://learn.microsoft.com/en-US/dotnet/maui/what-is-maui",
+	"Redmond", startDate, endDate, this.SelectedCalendarItem);
+
+	if (!string.IsNullOrEmpty(selectedCalendar))
+	{
+		WeakReferenceMessenger.Default.Send(new CloseCalendarPickerMessage(string.Empty));
+		Application.Current.MainPage.DisplayAlert("Calendar registration successful", $"The event was successfully added to calendar '{selectedCalendar}'!", "OK");
+	}
+}
+```
 
    Here some ScreenShots of the sample app using the `Plugin.Maui.AddToCalendar` for iOS, Android and macOS:
 
@@ -100,4 +165,3 @@ Mac OS:
 <img src="https://user-images.githubusercontent.com/10572315/262338387-3db0c302-0342-4d04-ac6e-9655fc6f1a48.png" height="400" alt="Screenshot1"/>
 
 <img src="https://user-images.githubusercontent.com/10572315/262338392-d2d77fb6-6336-4118-8f50-aa0f34171f7c.png" height="400" alt="Screenshot1"/>
-

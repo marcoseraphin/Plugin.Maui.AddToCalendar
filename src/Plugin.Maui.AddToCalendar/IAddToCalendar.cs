@@ -1,9 +1,10 @@
-﻿namespace Plugin.Maui.Feature;
+﻿namespace Plugin.Maui.AddToCalendar;
 
 /// <summary>
-/// TODO: Provide relevant comments for your APIs
+/// Interface read local calendar list from current device and create a new event
 /// </summary>
-public interface IFeature
+public interface IAddToCalendar
 {
-	// TODO Define your plugin interface
+	List<string> GetCalendarList();
+	void CreateCalendarEvent(string title, string description, string location, DateTime startDate, DateTime endDate, string calendarName);
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1704.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Maui.AddToCalendar", "Plugin.Maui.AddToCalendar\Plugin.Maui.AddToCalendar.csproj", "{2012F564-B8C7-4CEB-8495-1BCB1B0EB638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Maui.Feature.Sample", "..\samples\Plugin.Maui.Feature.Sample\Plugin.Maui.Feature.Sample.csproj", "{9FD3AFC0-64C3-4B7C-A465-770022708477}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2012F564-B8C7-4CEB-8495-1BCB1B0EB638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2012F564-B8C7-4CEB-8495-1BCB1B0EB638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2012F564-B8C7-4CEB-8495-1BCB1B0EB638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD3AFC0-64C3-4B7C-A465-770022708477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD3AFC0-64C3-4B7C-A465-770022708477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD3AFC0-64C3-4B7C-A465-770022708477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD3AFC0-64C3-4B7C-A465-770022708477}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

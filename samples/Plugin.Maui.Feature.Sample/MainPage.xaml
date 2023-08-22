@@ -1,8 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Plugin.Maui.Feature.Sample.MainPage"
-             Title="Feature Plugin">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="Plugin.Maui.AddToCalendar.Sample.MainPage"
+             Title="Plugin.Maui.AddToCalendar Sample">
+
+    <VerticalStackLayout>
+        <Label Text="Add to Calendar sample"
+               FontSize="28"
+               Margin="30"/>
+
+        <Button Text="Add sample event of today to local calendar"
+                HorizontalOptions="Center"/>
+
+        <Picker
+            x:Name="CalendarPicker"
+            ios:Picker.UpdateMode="WhenFinished"
+            FontSize="17"
+            HorizontalOptions="EndAndExpand"
+            IsVisible="False"
+            ItemDisplayBinding="{Binding .}"
+            ItemsSource="{Binding CalendarPickerList}"
+            SelectedItem="{Binding SelectedCalendarItem}"
+            TextColor="Black"
+            VerticalOptions="Center" />
+
+    </VerticalStackLayout>
 
     <!-- Add something that makes sense for your plugin here -->
 </ContentPage>

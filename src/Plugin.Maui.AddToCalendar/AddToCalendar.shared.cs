@@ -1,15 +1,15 @@
-﻿namespace Plugin.Maui.Feature;
+﻿namespace Plugin.Maui.AddToCalendar;
 
-public static class Feature
+public static class AddToCalendarService
 {
-	static IFeature? defaultImplementation;
+	static IAddToCalendar? defaultImplementation;
 
 	/// <summary>
 	/// Provides the default implementation for static usage of this API.
 	/// </summary>
-	public static IFeature Default =>
-		defaultImplementation ??= new FeatureImplementation();
+	public static IAddToCalendar Default =>
+		defaultImplementation ??= new AddToCalendarServiceImplementation();
 
-	internal static void SetDefault(IFeature? implementation) =>
+	internal static void SetDefault(IAddToCalendar? implementation) =>
 		defaultImplementation = implementation;
 }

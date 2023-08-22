@@ -1,6 +1,6 @@
-# Plugin.Maui.Feature Template
+# Plugin.Maui.AddToCalendar Template
 
-The `Plugin.Maui.Feature` repository is a template repository that can be used to bootstrap your own .NET MAUI plugin project. You can use this project structure as a blueprint for your own work.
+The `Plugin.Maui.AddToCalendar` repository is a template repository that can be used to bootstrap your own .NET MAUI plugin project. You can use this project structure as a blueprint for your own work.
 
 This template contains:
 

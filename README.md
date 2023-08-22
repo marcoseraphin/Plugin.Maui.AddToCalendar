@@ -83,4 +83,6 @@ partial void OnSelectedCalendarItemChanged(string value)
 
    Here some ScreenShots of the sample app using the `Plugin.Maui.AddToCalendar` for iOS, Android and macOS:
 
-   
+      Here some ScreenShots of the sample app using the `Plugin.Maui.AddToCalendar` for iOS, Android and macOS:
+
+   (https://user-images.githubusercontent.com/10572315/262338408-5f3ab3af-6dd1-4fe0-a8c9-fed8a84da64b.png)

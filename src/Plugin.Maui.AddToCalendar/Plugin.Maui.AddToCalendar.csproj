@@ -19,6 +19,7 @@
 		<Authors>Marco Seraphin</Authors>
 		<Copyright>Copyright © Marco Seraphin and contributors</Copyright>
 		<IsPackable>True</IsPackable>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/marcoseraphin/Plugin.Maui.AddToCalendar</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/marcoseraphin/Plugin.Maui.AddToCalendar</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -73,5 +74,6 @@
 	<!-- Package additions -->
 	<ItemGroup>
 		<None Include="..\..\nuget.png" PackagePath="icon.png" Pack="true" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>

@@ -16,8 +16,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddSingleton<IAddToCalendar>(AddToCalendarService.Default);
 
-		// Register Pages and ViewModels
-		builder.Services.AddTransient<MainPage>();
+		// Register ViewModel
 		builder.Services.AddTransient<MainViewModel>();
 
 		return builder.Build();

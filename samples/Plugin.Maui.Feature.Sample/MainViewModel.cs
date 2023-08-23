@@ -80,7 +80,7 @@ public partial class MainViewModel : ObservableObject
 				return;
 			}
 
-			var result = await Application.Current.MainPage.DisplayAlert("Add to calendar", $"Would you like to add this show to your personal calendar?{Environment.NewLine}{Environment.NewLine}Please select one of your calendars", "Add Event", "Cancel");
+			var result = await Application.Current.MainPage.DisplayAlert("Add to calendar", $"Would you like to add this event to your personal calendar?{Environment.NewLine}{Environment.NewLine}Please select one of your calendars", "Add Event", "Cancel");
 			if (!result)
 			{
 				return;
@@ -125,7 +125,7 @@ public partial class MainViewModel : ObservableObject
 
 				WeakReferenceMessenger.Default.Send(new CloseCalendarPickerMessage(string.Empty));
 
-				await Application.Current.MainPage.DisplayAlert("Kalendareintragung erfolgreich", $"Die Show wurde erfolgreich in '{selectedCalendar}' eingetragen!", "OK");
+				await Application.Current.MainPage.DisplayAlert("Calendar registration successful", $"The event was successfully added to calendar '{selectedCalendar}'!", "OK");
 			}
 		}
 		catch (System.Exception ex)

@@ -100,57 +100,57 @@ This sample code shows the usage of the API methods:
 
 ```
 partial void OnSelectedCalendarItemChanged(string value)
+{
+	string selectedCalendar = null;
+
+	var calendars = this.addToCalendarService.GetCalendarList();
+	if (calendars.Count <= 0)
 	{
-		string selectedCalendar = null;
-
-		var calendars = this.addToCalendarService.GetCalendarList();
-		if (calendars.Count <= 0)
-		{
-			return;
-		}
-
-		// get selected calendar
-		if (calendars.Count <= 1)
-		{
-			return;
-		}
-
-		foreach (var itemCalendar in calendars)
-		{
-			if (SelectedCalendarItem != itemCalendar)
-			{
-				continue;
-			}
-			selectedCalendar = itemCalendar;
-			break;
-		}
-
-		DateTime today = DateTime.Now;
-		var startDate = new DateTime(today.Year,
-									 today.Month,
-									 today.Day, 8, 0, 0);
-
-		var endDate = new DateTime(today.Year,
-								   today.Month,
-								   today.Day, 18, 0, 0);
-
-		this.addToCalendarService.CreateCalendarEvent("Event MAUI conference",
-		"Visit the MAUI conference, URL: https://learn.microsoft.com/en-US/dotnet/maui/what-is-maui",
-		"Redmond", startDate, endDate, this.SelectedCalendarItem);
-
-		if (!string.IsNullOrEmpty(selectedCalendar))
-		{
-			WeakReferenceMessenger.Default.Send(new CloseCalendarPickerMessage(string.Empty));
-			Application.Current.MainPage.DisplayAlert("Calendar registration successful", $"The event was successfully added to calendar '{selectedCalendar}'!", "OK");
-		}
+		return;
 	}
-   ```
+
+	// get selected calendar
+	if (calendars.Count <= 1)
+	{
+		return;
+	}
+
+	foreach (var itemCalendar in calendars)
+	{
+		if (SelectedCalendarItem != itemCalendar)
+		{
+			continue;
+		}
+		selectedCalendar = itemCalendar;
+		break;
+	}
+
+	DateTime today = DateTime.Now;
+	var startDate = new DateTime(today.Year,
+								today.Month,
+								today.Day, 8, 0, 0);
+
+	var endDate = new DateTime(today.Year,
+							   today.Month,
+							   today.Day, 18, 0, 0);
+
+	this.addToCalendarService.CreateCalendarEvent("Event MAUI conference",
+	"Visit the MAUI conference, URL: https://learn.microsoft.com/en-US/dotnet/maui/what-is-maui",
+	"Redmond", startDate, endDate, this.SelectedCalendarItem);
+
+	if (!string.IsNullOrEmpty(selectedCalendar))
+	{
+		WeakReferenceMessenger.Default.Send(new CloseCalendarPickerMessage(string.Empty));
+		Application.Current.MainPage.DisplayAlert("Calendar registration successful", $"The event was successfully added to calendar '{selectedCalendar}'!", "OK");
+	}
+}
+```
 
    Here some ScreenShots of the sample app using the `Plugin.Maui.AddToCalendar` for iOS, Android and macOS:
 
 iOS:
 
-<img src="https://user-images.githubusercontent.com/10572315/262338408-5f3ab3af-6dd1-4fe0-a8c9-fed8a84da64b.png" height="400" alt="Screenshot1"/> <img src="https://user-images.githubusercontent.com/10572315/262338398-6faeea40-aa0e-4b39-863c-f335a82deed5.png" height="400" alt="Screenshot1"/> <img src="https://user-images.githubusercontent.com/10572315/262338401-6c9a992b-657b-4c47-9240-c7f4c89fef18.png" height="400" alt="Screenshot1"/>
+<img src="https://user-images.githubusercontent.com/10572315/262338408-5f3ab3af-6dd1-4fe0-a8c9-fed8a84da64b.png" height="400" alt="Screenshot1"/>  <img src="https://user-images.githubusercontent.com/10572315/262338401-6c9a992b-657b-4c47-9240-c7f4c89fef18.png" height="400" alt="Screenshot1"/>
 
 <img src="https://user-images.githubusercontent.com/10572315/262338410-3daae351-edc6-4bbe-a82d-ad99a312a551.png" height="400" alt="Screenshot1"/> <img src="https://user-images.githubusercontent.com/10572315/262338419-4c196081-34ea-4fb3-a1cb-8a824ba2b3c5.png" height="400" alt="Screenshot1"/> <img src="https://user-images.githubusercontent.com/10572315/262338420-2387b161-08ff-42b1-9498-a6b18bd54753.png" height="400" alt="Screenshot1"/>
 

@@ -13,6 +13,16 @@ partial class AddToCalendarServiceImplementation : IAddToCalendar
 
 	public List<string> GetCalendarList()
 	{
-		throw new NotImplementedException();
+		var calendarList = new List<string>();
+
+		var appointmentStore = await AppointmentManager.RequestStoreAsync(AppointmentStoreAccessType.AllCalendarsReadOnly);
+		var calendars = await appointmentStore.FindAppointmentCalendarsAsync(FindAppointmentCalendarsOptions.None);
+		foreach (var calendar in calendars)
+		{
+			calendarList.Add(calendar.DisplayName);
+			System.Diagnostics.Debug.WriteLine($"Calendar: {calendar.DisplayName}");
+		}
+
+		return calendarList;
 	}
 }

@@ -8,6 +8,7 @@ namespace Plugin.Maui.AddToCalendar.Sample;
 
 public partial class MainViewModel : ObservableObject
 {
+	// Service
 	IAddToCalendar addToCalendarService;
 
 	[ObservableProperty]
